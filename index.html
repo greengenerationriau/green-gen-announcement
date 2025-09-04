@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengumuman Green Generation Riau 2025</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #e9f7ec;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    .container {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 90%;
+    }
+    h1 {
+      color: #2e7d32;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    button {
+      background: #2e7d32;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+    }
+    button:hover {
+      background: #256528;
+    }
+    @media (max-width: 600px) {
+      h1 { font-size: 1.2rem; }
+      input, button { font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Pengumuman Green Generation Riau 2025</h1>
+    <form id="checkForm">
+      <input type="text" id="name" placeholder="Masukkan Nama Lengkap" required>
+      <input type="date" id="birthdate" required>
+      <button type="submit">Cek Hasil</button>
+    </form>
+  </div>
+
+  <script>
+    const participants = {
+      // Divisi IPTEK & Publikasi
+      "SEVEN SAPUTRA|2008-03-10": "Divisi IPTEK dan Publikasi",
+      "MUHAMMAD IHSAN|2007-03-29": "Divisi IPTEK dan Publikasi",
+      "FIQRI HAIKAL|2006-08-10": "Divisi IPTEK dan Publikasi",
+      "KEISYA NABILA SYOFYAN|2009-06-22": "Divisi IPTEK dan Publikasi",
+      "JHONATAN IGNASIUS SINAMBELA|2006-12-17": "Divisi IPTEK dan Publikasi",
+      "GHAZI AKMA|2009-07-31": "Divisi IPTEK dan Publikasi",
+      "RAHIMA DZAKIRA NISA|2007-09-24": "Divisi IPTEK dan Publikasi",
+      "IKHSAN SAPUTRA|2008-05-07": "Divisi IPTEK dan Publikasi",
+
+      // Divisi Humas
+      "ADILLA JELITA SATRIA|2010-10-16": "Divisi Hubungan Masyarakat",
+      "OCTAVIANTI CITRA|2008-10-08": "Divisi Hubungan Masyarakat",
+      "SITI ANGELINA|2008-12-27": "Divisi Hubungan Masyarakat",
+      "ELSA SEPTYA ATIKAH|2007-09-03": "Divisi Hubungan Masyarakat",
+      "NASYWA DZULHI PUTRI|2006-12-27": "Divisi Hubungan Masyarakat",
+      "CHERYLLIA ARNI|2007-11-15": "Divisi Hubungan Masyarakat",
+      "HANS CASTRO MANURUNG|2007-10-16": "Divisi Hubungan Masyarakat"
+    };
+
+    document.getElementById("checkForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim().toUpperCase();
+      const birthdate = document.getElementById("birthdate").value;
+
+      if (!name || !birthdate) {
+        alert("Silakan lengkapi data terlebih dahulu.");
+        return;
+      }
+
+      const key = `${name}|${birthdate}`;
+      const division = participants[key];
+
+      const newTab = window.open("", "_blank");
+      newTab.document.write(`
+        <html>
+          <head>
+            <title>Hasil Pengumuman</title>
+            <style>
+              body { font-family: 'Poppins', sans-serif; background: #e9f7ec; text-align:center; padding:30px; }
+              .box { background:white; padding:20px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1); max-width:600px; margin:auto; }
+              h2 { color:#2e7d32; }
+              p { font-size:1rem; color:#333; line-height:1.6; }
+            </style>
+          </head>
+          <body>
+            <div class="box">
+      `);
+
+      if (division) {
+        newTab.document.write(`
+          <h2>🎉 Selamat, ${name}!</h2>
+          <p>Perjalananmu baru saja dimulai. Semoga ini menjadi langkah awal untuk kontribusi nyata bersama Green Generation Riau 2025.</p>
+          <p>Kamu diterima di <b>${division}</b>.</p>
+          <p>Untuk konfirmasi, silakan hubungi nomor <b>0819-9268-3849 (Aidil)</b> dengan menyertakan bukti.</p>
+        `);
+      } else {
+        newTab.document.write(`
+          <h2>Terima Kasih, ${name}</h2>
+          <p>Sayangnya kamu belum lolos pada seleksi Green Generation Riau 2025. Jangan berkecil hati, tetaplah semangat untuk terus berkarya dan berkontribusi di kesempatan berikutnya.</p>
+          <p>Kami percaya perjalananmu masih panjang dan akan ada banyak pintu terbuka untukmu 🌿.</p>
+        `);
+      }
+
+      newTab.document.write(`</div></body></html>`);
+      newTab.document.close();
+    });
+  </script>
+</body>
+</html>
